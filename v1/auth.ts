@@ -2,8 +2,8 @@
  * Used to authenticate a user and to get the access token
  * @method POST
  * @path /auth/authenticate
- * @param email
- * @param password
+ * @param email User's email address
+ * @param password User's password
  * @canfail
  */
 interface Authenticate {
@@ -19,8 +19,8 @@ interface Authenticate {
  * Used to finish authentication using 2FA
  * @method POST
  * @path /auth/2fa
- * @param token
- * @param code
+ * @param token Token received from /authenticate
+ * @param code 2FA code from authenticator
  * @canfail
  */
 interface Authenticate2FA {
@@ -34,7 +34,7 @@ interface Authenticate2FA {
  * Used to verify that an access token is valid
  * @method POST
  * @path /auth/token/verify
- * @param accessToken
+ * @param accessToken Account access token
  */
 interface VerifyToken {
 	/* Whether the token is valid */
@@ -45,7 +45,7 @@ interface VerifyToken {
  * Used to generate a new access token and deauth all other devices
  * @method POST
  * @path /auth/token
- * @param accessToken
+ * @requires authentication
  * @canfail
  */
 interface RefreshToken {
@@ -54,10 +54,10 @@ interface RefreshToken {
 };
 
 /**
- * Used to remove access token completely and generate on next login
+ * Used to revoke access token completely and deauth all devices
  * @method DELETE
  * @path /auth/token
- * @param accessToken
+ * @requires authentication
  */
 interface RemoveToken {
 	/* Whether the token has been removed */
@@ -68,13 +68,14 @@ interface RemoveToken {
  * Register a new user on the platform
  * @method POST
  * @path /auth/create
- * @param email
- * @param password
- * @param username
- * @param redirectURI
+ * @param email Registration email
+ * @param password Chosen password
+ * @param username Chosen username
+ * @param redirectURI URL to redirect to after registration
  * @canfail
  */
 interface UserCreation {
+	/* Access token for the new account */
 	accessToken: string
 };
 
@@ -82,7 +83,7 @@ interface UserCreation {
  * Verify a user (path sent by email)
  * @method GET
  * @path /auth/verify
- * @param code
+ * @param code Verification code sent by email
  */
 interface EmailVerify {
 	redirectsTo: 'https://riotchat.gq/verified'
