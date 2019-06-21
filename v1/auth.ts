@@ -6,7 +6,7 @@
  * @param password User's password
  * @canfail
  */
-interface Authenticate {
+export interface Authenticate {
 	/* Data below will exist if false, otherwise continue down 2FA path */
 	do2FA: false | string
 	/* Username for welcome strings while app loads */
@@ -23,7 +23,7 @@ interface Authenticate {
  * @param code 2FA code from authenticator
  * @canfail
  */
-interface Authenticate2FA {
+export interface Authenticate2FA {
 	/* Username for welcome strings while app loads */
 	username: string
 	/* Access token for further API requests */
@@ -36,7 +36,7 @@ interface Authenticate2FA {
  * @path /auth/token/verify
  * @param accessToken Account access token
  */
-interface VerifyToken {
+export interface VerifyToken {
 	/* Whether the token is valid */
 	valid: boolean
 };
@@ -48,7 +48,7 @@ interface VerifyToken {
  * @requires authentication
  * @canfail
  */
-interface RefreshToken {
+export interface RefreshToken {
 	/* New access token, replace the old one locally */
 	accessToken: string
 };
@@ -59,7 +59,7 @@ interface RefreshToken {
  * @path /auth/token
  * @requires authentication
  */
-interface RemoveToken {
+export interface RemoveToken {
 	/* Whether the token has been removed */
 	success: boolean
 };
@@ -74,7 +74,7 @@ interface RemoveToken {
  * @param redirectURI URL to redirect to after registration
  * @canfail
  */
-interface UserCreation {
+export interface UserCreation {
 	/* Access token for the new account */
 	accessToken: string
 };
@@ -85,6 +85,6 @@ interface UserCreation {
  * @path /auth/verify
  * @param code Verification code sent by email
  */
-interface EmailVerify {
+export interface EmailVerify {
 	redirectsTo: 'https://riotchat.gq/verified'
 };
