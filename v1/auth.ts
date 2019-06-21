@@ -6,13 +6,18 @@
  * @param password User's password
  * @canfail
  */
-export interface Authenticate {
-	/* Data below will exist if false, otherwise continue down 2FA path */
-	do2FA: false | string
+export type Authenticate = {
+	/* 2FA is not enabled, user is authenticated */
+	do2FA: false
 	/* Username for welcome strings while app loads */
-	username?: string
+	username: string
 	/* Access token for further API requests */
-	accessToken?: string
+	accessToken: string
+} | {
+	/* 2FA is enabled, use two factor */
+	do2FA: true,
+	/* Two factor request token, used to call /auth/2fa to continue */
+	token: string
 };
 
 /**
