@@ -36,40 +36,6 @@ export interface Authenticate2FA {
 };
 
 /**
- * Used to verify that an access token is valid
- * @method POST
- * @path /auth/token/verify
- * @param accessToken Account access token
- */
-export interface VerifyToken {
-	/* Whether the token is valid */
-	valid: boolean
-};
-
-/**
- * Used to generate a new access token and deauth all other devices
- * @method POST
- * @path /auth/token
- * @requires authentication
- * @canfail
- */
-export interface RefreshToken {
-	/* New access token, replace the old one locally */
-	accessToken: string
-};
-
-/**
- * Used to revoke access token completely and deauth all devices
- * @method DELETE
- * @path /auth/token
- * @requires authentication
- */
-export interface RemoveToken {
-	/* Whether the token has been removed */
-	success: boolean
-};
-
-/**
  * Register a new user on the platform
  * @method POST
  * @path /auth/create
@@ -80,7 +46,6 @@ export interface RemoveToken {
  * @canfail
  */
 export interface UserCreation {
-	/* Access token for the new account */
 	accessToken: string
 };
 
@@ -90,6 +55,6 @@ export interface UserCreation {
  * @path /auth/verify
  * @param code Verification code sent by email
  */
-export interface EmailVerify {
-	redirectsTo: 'https://riotchat.gq/verified'
-};
+//export interface EmailVerify {
+//	redirectsTo: 'https://riotchat.gq/verified'
+//};

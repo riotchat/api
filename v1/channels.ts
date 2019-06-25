@@ -1,3 +1,5 @@
+type ChannelID = string;
+
 enum ChannelType {
 	DM = 0,
 	GROUP = 1,
@@ -11,19 +13,42 @@ enum ChannelType {
  * @requires authentication
  */
 export type Channel = {
-	id: number,
+	id: string,
 	description: string
 } & (
 	{
 		type: ChannelType.DM,
-		users: [number, number]
+		users: [string, string]
 	} |
 	{
 		type: ChannelType.GROUP,
-		group: number
+		group: string
 	} |
 	{
 		type: ChannelType.GUILD,
-		guild: number
+		guild: string
 	}
 );
+
+/**
+ * Get messages from a channel
+ * @method GET
+ * @path /channels/[ChannelID]/messages
+ * @requires authentication
+ */
+export type GetMessages = {
+	id: string,
+	content: string,
+	author: string,
+	channel: string
+}[];
+
+/**
+ * Post a message to a channel
+ * @method POST
+ * @path /channels/[ChannelID]/messages
+ * @requires authentication
+ */
+export interface SendMessage {
+	id: string
+};
