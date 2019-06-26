@@ -9,8 +9,12 @@ export type Status = 'online' | 'away' | 'busy' | 'invisible' | 'offline';
  * @requires authentication
  */
 export interface User {
+	id: string,
+	username: string,	
 	email?: string,
-	status: Status
+
+	status: Status,
+	avatarURL: string
 };
 
 /**
