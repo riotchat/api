@@ -1,6 +1,6 @@
 type ChannelID = string;
 
-enum ChannelType {
+export enum ChannelType {
 	DM = 0,
 	GROUP = 1,
 	GUILD = 2
@@ -13,8 +13,7 @@ enum ChannelType {
  * @requires authentication
  */
 export type Channel = {
-	id: string,
-	description: string
+	id: string
 } & (
 	{
 		type: ChannelType.DM,
@@ -22,11 +21,13 @@ export type Channel = {
 	} |
 	{
 		type: ChannelType.GROUP,
-		group: string
+		group: string,
+		description: string
 	} |
 	{
 		type: ChannelType.GUILD,
-		guild: string
+		guild: string,
+		description: string
 	}
 );
 
