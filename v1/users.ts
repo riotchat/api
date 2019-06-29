@@ -55,10 +55,19 @@ export type Friends = {
 }[];
 
 /**
- * Add someone as a friend
+ * Add someone as a friend or accept an invite
  * @method POST
  * @path /users/@me/friends/:id
  * @requires authentication
  * @canfail
  */
 export interface AddFriend {};
+
+/**
+ * Remove someone as a friend
+ * @method DELETE
+ * @path /users/@me/friends/:id
+ * @requires authentication
+ * @canfail
+ */
+export interface RemoveFriend {};
