@@ -64,7 +64,7 @@ export type Friends = {
 export interface AddFriend {};
 
 /**
- * Remove someone as a friend
+ * Remove someone as a friend or cancel request
  * @method DELETE
  * @path /users/@me/friends/:id
  * @requires authentication
