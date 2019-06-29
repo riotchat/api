@@ -1,3 +1,8 @@
+export interface Error {
+	type: 'error',
+	error: string
+};
+
 export interface MessageCreate {
 	type: 'messageCreate',
 	id: string,
@@ -6,4 +11,15 @@ export interface MessageCreate {
 	channel: string
 };
 
-export type Packets = MessageCreate;
+export interface Authenticated {
+	type: 'authenticated'
+};
+
+export type Packets = Error | MessageCreate | Authenticated;
+
+export interface Authenticate {
+	type: 'authenticate',
+	token: string
+};
+
+export type ClientPackets = Error | Authenticate;
