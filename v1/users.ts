@@ -2,7 +2,7 @@ export type UserIdentifier = '@me' | number;
 
 export type Status = 'online' | 'away' | 'busy' | 'invisible' | 'offline';
 
-export type FriendType = 'pending' | 'incoming' | 'active';
+export type FriendType = 'unknown' | 'pending' | 'incoming' | 'active' | 'self';
 
 /**
  * Get basic user information including profile
