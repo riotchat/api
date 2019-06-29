@@ -11,11 +11,16 @@ export type FriendType = 'unknown' | 'pending' | 'incoming' | 'active' | 'self';
  * @requires authentication
  */
 export interface User {
+	/* Internal user id */
 	id: string
+	/* Public username */
 	username: string
+	/* Email */
 	email?: string
 
+	/* User profile status */
 	status: Status
+	/* User's profile picture */
 	avatarURL: string
 };
 
@@ -27,7 +32,9 @@ export interface User {
  * @canfail
  */
 export type GetDMs = {
+	/* Channel id  */
 	id: string
+	/* Recipient of DM */
 	user: string
 }[];
 
@@ -40,6 +47,7 @@ export type GetDMs = {
  * @canfail
  */
 export interface CreateDM {
+	/* DM channel id */
 	id: string
 };
 
@@ -50,7 +58,9 @@ export interface CreateDM {
  * @requires authentication
  */
 export type Friends = {
+	/* A friend's id */
 	user: string
+	/* Relation of user to self */
 	type: FriendType
 }[];
 
@@ -61,7 +71,10 @@ export type Friends = {
  * @requires authentication
  * @canfail
  */
-export interface AddFriend {};
+export interface AddFriend {
+	/* Relation after addition or sending invite */
+	status: FriendType
+};
 
 /**
  * Remove someone as a friend or cancel request
@@ -70,4 +83,7 @@ export interface AddFriend {};
  * @requires authentication
  * @canfail
  */
-export interface RemoveFriend {};
+export interface RemoveFriend {
+	/* Relation after removal */
+	status: FriendType
+};
