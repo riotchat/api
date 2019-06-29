@@ -2,6 +2,8 @@ export type UserIdentifier = '@me' | number;
 
 export type Status = 'online' | 'away' | 'busy' | 'invisible' | 'offline';
 
+export type FriendType = 'pending' | 'incoming' | 'active';
+
 /**
  * Get basic user information including profile
  * @method GET
@@ -9,11 +11,11 @@ export type Status = 'online' | 'away' | 'busy' | 'invisible' | 'offline';
  * @requires authentication
  */
 export interface User {
-	id: string,
-	username: string,	
-	email?: string,
+	id: string
+	username: string
+	email?: string
 
-	status: Status,
+	status: Status
 	avatarURL: string
 };
 
@@ -25,7 +27,7 @@ export interface User {
  * @canfail
  */
 export type GetDMs = {
-	id: string,
+	id: string
 	user: string
 }[];
 
@@ -41,4 +43,22 @@ export interface CreateDM {
 	id: string
 };
 
-//export in
+/**
+ * Get user's friends
+ * @method GET
+ * @path /users/@me/friends
+ * @requires authentication
+ */
+export type Friends = {
+	user: string
+	type: FriendType
+}[];
+
+/**
+ * Add someone as a friend
+ * @method POST
+ * @path /users/@me/friends/:id
+ * @requires authentication
+ * @canfail
+ */
+export interface AddFriend {};
