@@ -6,6 +6,17 @@ export enum ChannelType {
 	GUILD = 2
 };
 
+export interface Message {
+	id: string
+	content: string
+
+	createdAt: number
+	updatedAt: number
+
+	author: string
+	channel: string
+};
+
 /**
  * Get channel information
  * @method GET
@@ -37,12 +48,7 @@ export type Channel = {
  * @path /channels/[ChannelID]/messages
  * @requires authentication
  */
-export type GetMessages = {
-	id: string,
-	content: string,
-	author: string,
-	channel: string
-}[];
+export type GetMessages = Message[];
 
 /**
  * Post a message to a channel
