@@ -25,6 +25,18 @@ export interface User {
 };
 
 /**
+ * Update user
+ * @method PUT
+ * @path /users/[UserIdentifier]
+ * @param username Checks and sets new username if available
+ * @param email Uses new email if available, will unverify account temporarily
+ * @param status Used to update user presence, cannot be offline
+ * @param avatarURL Update user's avatar, [!] WILL BE DEPRECATED IN FAVOR OF UPLOADS
+ * @requires authentication
+ */
+export type UpdateUser = User;
+
+/**
  * Get DM channels.
  * @method GET
  * @path /users/@me/channels

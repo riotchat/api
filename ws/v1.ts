@@ -1,16 +1,13 @@
 import { FriendType } from '../v1/users';
+import { Message } from '../v1/channels';
 
 export interface Error {
 	type: 'error',
 	error: string
 };
 
-export interface MessageCreate {
-	type: 'messageCreate',
-	id: string,
-	content: string,
-	author: string,
-	channel: string
+export interface MessageCreate extends Message {
+	type: 'messageCreate'
 };
 
 export interface Authenticated {

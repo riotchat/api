@@ -1,5 +1,7 @@
 type ChannelID = string;
 
+type MessageID = string;
+
 export enum ChannelType {
 	DM = 0,
 	GROUP = 1,
@@ -24,20 +26,20 @@ export interface Message {
  * @requires authentication
  */
 export type Channel = {
-	id: string
+	id: ChannelID
 } & (
 	{
-		type: ChannelType.DM,
+		type: ChannelType.DM
 		users: [string, string]
 	} |
 	{
-		type: ChannelType.GROUP,
-		group: string,
+		type: ChannelType.GROUP
+		group: string
 		description: string
 	} |
 	{
-		type: ChannelType.GUILD,
-		guild: string,
+		type: ChannelType.GUILD
+		guild: string
 		description: string
 	}
 );
@@ -57,5 +59,15 @@ export type GetMessages = Message[];
  * @requires authentication
  */
 export interface SendMessage {
-	id: string
+	id: MessageID
+};
+
+/**
+ * Edit a message
+ * @method POST
+ * @path /channels/[ChannelID]/messages/[MessageID]
+ * @requires authentication
+ */
+export interface EditMessage {
+	updatedAt: number
 };
