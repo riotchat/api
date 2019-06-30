@@ -1,5 +1,5 @@
 import { FriendType } from '../v1/users';
-import { Message } from '../v1/channels';
+import { Message, MessageID } from '../v1/channels';
 
 export interface Error {
 	type: 'error',
@@ -8,6 +8,13 @@ export interface Error {
 
 export interface MessageCreate extends Message {
 	type: 'messageCreate'
+};
+
+export interface MessageUpdate {
+	type: 'messageUpdate'
+	id: MessageID
+	content: string
+	updatedAt: number
 };
 
 export interface Authenticated {
@@ -22,7 +29,7 @@ export interface UserUpdate {
 	relation?: FriendType
 }
 
-export type Packets = Error | MessageCreate | Authenticated | UserUpdate;
+export type Packets = Error | MessageCreate | MessageUpdate | Authenticated | UserUpdate;
 
 export interface Authenticate {
 	type: 'authenticate',

@@ -1,6 +1,6 @@
-type ChannelID = string;
+export type ChannelID = string;
 
-type MessageID = string;
+export type MessageID = string;
 
 export enum ChannelType {
 	DM = 0,
