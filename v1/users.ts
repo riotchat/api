@@ -27,7 +27,7 @@ export interface User {
 /**
  * Update user
  * @method PUT
- * @path /users/[UserIdentifier]
+ * @path /users/@me
  * @param username Checks and sets new username if available
  * @param email Uses new email if available, will unverify account temporarily
  * @param status Used to update user presence, cannot be offline
