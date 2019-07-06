@@ -77,7 +77,8 @@ export type Friends = {
 }[];
 
 /**
- * Add someone as a friend or accept an invite
+ * Add someone as a friend
+ * Accept a friend request
  * @method POST
  * @path /users/@me/friends/:id
  * @requires authentication
@@ -89,7 +90,8 @@ export interface AddFriend {
 };
 
 /**
- * Remove someone as a friend or cancel request
+ * Remove someone as a friend
+ * Deny a friend request
  * @method DELETE
  * @path /users/@me/friends/:id
  * @requires authentication

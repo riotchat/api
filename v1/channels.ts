@@ -1,6 +1,6 @@
 export type ChannelID = string;
-
 export type MessageID = string;
+export type UserID = string;
 
 export enum ChannelType {
 	DM = 0,
@@ -9,14 +9,20 @@ export enum ChannelType {
 };
 
 export interface Message {
+	/* Message id */
 	id: string
+	/* String contents, supports unicode */
 	content: string
 
+	/* Unix timestamp of when the message was created (UTC+0) */
 	createdAt: number
+	/* Unix timestamp of when the message was last edited (UTC+0) */
 	updatedAt: number
 
-	author: string
-	channel: string
+	/* User id of the author */
+	author: UserID
+	/* Id of the channel */
+	channel: ChannelID
 };
 
 /**
@@ -26,11 +32,12 @@ export interface Message {
  * @requires authentication
  */
 export type Channel = {
+	/* Returns channel id for validation */
 	id: ChannelID
 } & (
 	{
 		type: ChannelType.DM
-		users: [string, string]
+		users: [UserID, UserID]
 	} |
 	{
 		type: ChannelType.GROUP
@@ -59,6 +66,7 @@ export type GetMessages = Message[];
  * @requires authentication
  */
 export interface SendMessage {
+	/* Id of the sent message */
 	id: MessageID
 };
 
@@ -69,5 +77,20 @@ export interface SendMessage {
  * @requires authentication
  */
 export interface EditMessage {
+	/* New edit unix timestamp (UTC+0) */
 	updatedAt: number
+};
+
+/**
+ * Add recipient to a DM
+ * Converts DM to group DM
+ * @method POST
+ * @path /channels/[ChannelID]/recipients
+ * @param recipients[]
+ * @requires authentication
+ * @canfail
+ */
+export interface AddRecipient {
+	/* Returns channel id of group DM */
+	id: ChannelID
 };
