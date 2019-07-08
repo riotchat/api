@@ -1,4 +1,5 @@
 export type ChannelID = string;
+export type GroupID = string;
 export type MessageID = string;
 export type UserID = string;
 
