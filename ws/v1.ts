@@ -6,9 +6,15 @@ export interface Error {
 	error: string
 };
 
+export interface Ping {
+	type: 'ping'
+};
+
 export interface Pong {
 	type: 'pong'
 };
+
+export type CommonPackets = Error | Ping | Pong;
 
 export interface Message extends IMessage {
 	type: 'message'
@@ -27,15 +33,11 @@ export interface UserUpdate {
 	relation?: FriendType
 }
 
-export type Packets = Error | Pong | Message | Authenticated | UserUpdate;
-
-export interface Ping {
-	type: 'ping'
-};
+export type Packets = CommonPackets | Message | Authenticated | UserUpdate;
 
 export interface Authenticate {
 	type: 'authenticate',
 	token: string
 };
 
-export type ClientPackets = Error | Ping | Authenticate;
+export type ClientPackets = CommonPackets | Authenticate;
