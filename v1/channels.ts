@@ -9,6 +9,12 @@ export enum ChannelType {
 	GUILD = 2
 };
 
+/**
+ * Get a message
+ * @method GET
+ * @path /channels/[ChannelID]/messages/[MessageID]
+ * @requires authentication
+ */
 export interface Message {
 	/* Message id */
 	id: string
@@ -31,6 +37,7 @@ export interface Message {
  * @method GET
  * @path /channels/[ChannelID]
  * @requires authentication
+ * @canfail
  */
 export type Channel = {
 	/* Returns channel id for validation */
@@ -59,6 +66,7 @@ export type Channel = {
  * @method DELETE
  * @path /channels/[ChannelID]
  * @requires authentication
+ * @canfail
  */
 export interface DeleteChannel { };
 
@@ -67,6 +75,7 @@ export interface DeleteChannel { };
  * @method GET
  * @path /channels/[ChannelID]/messages
  * @requires authentication
+ * @canfail
  */
 export type GetMessages = Message[];
 
@@ -79,29 +88,6 @@ export type GetMessages = Message[];
 export interface SendMessage {
 	/* Id of the sent message */
 	id: MessageID
-};
-
-/**
- * Get a message
- * @method GET
- * @path /channels/[ChannelID]/messages/[MessageID]
- * @requires authentication
- */
-export interface Message {
-	/* Message id */
-	id: MessageID
-	/* Contents of the message */
-	content: string
-
-	/* Creation timestamp (UTC+0) */
-	createdAt: number
-	/* Update timestamp (UTC+0) */
-	updatedAt: number
-
-	/* Message channel id */
-	channel: ChannelID
-	/* Author id */
-	author: UserID
 };
 
 /**
