@@ -53,6 +53,16 @@ export type Channel = {
 );
 
 /**
+ * Delete a guild channel
+ * Close a direct message
+ * Leave a group channel
+ * @method DELETE
+ * @path /channels/[ChannelID]
+ * @requires authentication
+ */
+export interface DeleteChannel { };
+
+/**
  * Get messages from a channel
  * @method GET
  * @path /channels/[ChannelID]/messages
@@ -72,6 +82,29 @@ export interface SendMessage {
 };
 
 /**
+ * Get a message
+ * @method GET
+ * @path /channels/[ChannelID]/messages/[MessageID]
+ * @requires authentication
+ */
+export interface Message {
+	/* Message id */
+	id: MessageID
+	/* Contents of the message */
+	content: string
+
+	/* Creation timestamp (UTC+0) */
+	createdAt: number
+	/* Update timestamp (UTC+0) */
+	updatedAt: number
+
+	/* Message channel id */
+	channel: ChannelID
+	/* Author id */
+	author: UserID
+};
+
+/**
  * Edit a message
  * @method POST
  * @path /channels/[ChannelID]/messages/[MessageID]
@@ -81,6 +114,14 @@ export interface EditMessage {
 	/* New edit unix timestamp (UTC+0) */
 	updatedAt: number
 };
+
+/**
+ * Delete a message
+ * @method DELETE
+ * @path /channels/[ChannelID]/messages/[MessageID]
+ * @requires authentication
+ */
+export interface DeleteMessage { };
 
 /**
  * Add recipient to a DM
