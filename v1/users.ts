@@ -35,7 +35,7 @@ export interface User {
 /**
  * Get group information
  * @method GET
- * @path /users/group/[GroupID]
+ * @path /users/@me/group/[GroupID]
  * @requires authentication
  * @shouldbe member
  */
@@ -77,12 +77,7 @@ export type UpdateUser = User;
  * @query sync
  * @requires authentication
  */
-export type GetDMs = ({
-	/* Channel id  */
-	id: ChannelID
-	/* Recipient of DM */
-	user: UserID
-} | Channel)[];
+export type GetDMs = (ChannelID | Channel)[];
 
 /**
  * Get groups.
@@ -91,12 +86,7 @@ export type GetDMs = ({
  * @query sync
  * @requires authentication
  */
-export type GetGroups = ({
-	/* Group id */
-	id: GroupID
-	/* Channel id */
-	channel: ChannelID;
-} | Group)[];
+export type GetGroups = (GroupID | Group)[];
 
 /**
  * Creates a DM conversation with the target user, returns an existing channel if one exists
