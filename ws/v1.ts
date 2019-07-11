@@ -1,4 +1,4 @@
-import { FriendType, Status } from '../v1/users';
+import { FriendType, Status, Activity } from '../v1/users';
 import { Message as IMessage } from '../v1/channels';
 
 export interface Error {
@@ -29,6 +29,10 @@ export interface UserUpdate {
 	user: string
 
 	status?: Status
+	activity?: {
+		type: Activity
+		custom?: string
+	}
 	avatarURL?: string
 	relation?: FriendType
 }
