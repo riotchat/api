@@ -2,7 +2,13 @@ import { ChannelID, UserID, GroupID, Channel } from './channels';
 
 export type UserIdentifier = '@me' | number;
 
-export type Status = 'online' | 'away' | 'busy' | 'invisible' | 'offline';
+export type Status = 'online' | 'away' | 'busy' | 'offline';
+
+export enum Activity {
+	None,
+	Custom,
+	Playing
+};
 
 export type FriendType = 'unknown' | 'pending' | 'incoming' | 'active' | 'self';
 
@@ -25,6 +31,13 @@ export interface User {
 
 	/* User profile status */
 	status: Status
+	/* User's current activity */
+	activity: {
+		/* Type of activity */
+		type: Activity
+		/* String to display as activity */
+		custom: string
+	}
 	/* User's profile picture */
 	avatarURL: string
 
