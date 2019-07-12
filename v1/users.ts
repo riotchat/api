@@ -10,6 +10,11 @@ export enum Activity {
 	Playing
 };
 
+export interface UserActivity {
+	type: Activity
+	custom?: string
+};
+
 export type FriendType = 'unknown' | 'pending' | 'incoming' | 'active' | 'self';
 
 /**
