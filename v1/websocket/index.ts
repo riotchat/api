@@ -1,5 +1,5 @@
-import { FriendType, Status, Activity } from '../v1/users';
-import { Message as IMessage } from '../v1/channels';
+import { FriendType, Status, Activity } from '../api/users';
+import { Message as IMessage } from '../api/channels';
 
 export interface Error {
 	type: 'error',
