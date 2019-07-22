@@ -17,7 +17,8 @@ export interface Pong {
 export type CommonPackets = Error | Ping | Pong;
 
 export interface Message extends IMessage {
-	type: 'message'
+	type: 'message',
+	nonce?: string
 };
 
 export interface Authenticated {
