@@ -1,4 +1,4 @@
-import { UserID, Channel, ChannelID } from "./channels";
+import { UserID, Channel } from "./channels";
 
 type GuildID = string;
 
@@ -51,6 +51,4 @@ export type GetGuilds = (GuildID | Guild)[];
  * @param name Channel name
  * @requires authentication
  */
-export interface CreateChannel {
-	id: ChannelID
-};
+export type CreateChannel = Channel;
