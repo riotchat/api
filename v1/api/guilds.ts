@@ -1,4 +1,4 @@
-import { UserID, Channel } from "./channels";
+import { UserID, ChannelID, Channel } from "./channels";
 
 type GuildID = string;
 
@@ -34,12 +34,3 @@ export interface Guild {
 export interface CreateGuild {
 	id: GuildID
 };
-
-/**
- * Get guilds.
- * @method GET
- * @path /list
- * @query sync
- * @requires authentication
- */
-export type GetGuilds = (GuildID | Guild)[];
