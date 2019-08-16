@@ -55,6 +55,7 @@ export type Channel = {
 	{
 		type: ChannelType.GUILD
 		guild: string
+		name: string
 		description: string
 	}
 );
